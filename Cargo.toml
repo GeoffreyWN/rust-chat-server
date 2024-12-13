@@ -3,4 +3,21 @@ name = "chat_server"
 version = "0.1.0"
 edition = "2021"
 
+[profile.release]
+codegen-units = 1
+lto = false
+
+[target.'cfg(not(target_env = "msvc"))'.dependencies]
+tikv-jemallocator = "0.6"
+
 [dependencies]
+tokio = { version = "1", features = ["full"] }
+tokio-util = {version = "0.7", features = ["codec"]}
+futures = "0.3.31"
+tracing = "0.1"
+tracing-subscriber = {version = "0.3", default-features = true, features = ["env-filter", "parking_lot", "smallvec", "fmt", "tracing-log", "std", "ansi"]}
+tracing-appender = "0.2.3"
+fastrand = "2.3.0"
+dashmap = "6.1.0"
+compact_str = "0.8.0"
+clap = {version = "4.5.23", features = ["derive"]}
