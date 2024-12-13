@@ -7,15 +7,11 @@ use tracing_subscriber::fmt::writer::EitherWriter::A;
 
 mod adjectives;
 mod animals;
-mod english;
-mod rust;
+
 
 use adjectives::ADJECTIVES;
 use animals::ANIMALS;
-use english::ENGLISH;
-use english::EMOJIS as ENG_EMOJIS;
-use rust::RUST;
-use rust::EMOJIS as RUST_EMOJIS;
+
 
 pub fn choose<T: Copy>(array: &[T]) -> T {
     array[fastrand::usize(..array.len())]
